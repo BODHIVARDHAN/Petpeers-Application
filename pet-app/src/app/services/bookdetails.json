@@ -1,0 +1,158 @@
+[{
+    "username": "user1@user.com",
+    "name": "user",
+    "admin": "true",
+    "currently_borrowed_books": [
+      {
+        "id": "1",
+        "book_name": "book1",
+        "author_name": "author_1",
+        "category": "category_1",
+        "borrowed_status": "borrowed",
+        "return_Date": "08/06/2021",
+        "borrowed_date": "25/05/2021"
+      },
+      {
+        "id": "2",
+        "book_name": "book2",
+        "author_name": "author_2",
+        "category": "category_2",
+        "borrowed_status": "borrowed",
+        "return_Date": "04/06/2021",
+        "borrowed_date": "22/05/2021"
+      }
+    ],
+    "Borrowed_transaction_history": [
+      {
+        "id": "4",
+        "book_name": "book_4",
+        "author_name": "author_4",
+        "category": "category_4",
+        "borrowed_status": "returned",
+        "return_Date": "19/05/2021",
+        "borrowed_date": "04/05/2021",
+        "over_dueamount": "0"
+      },
+      {
+        "id": "5",
+        "book_name": "book_",
+        "author_name": "author_4",
+        "category": "category_4",
+        "borrowed_status": "returned",
+        "return_Date": "18/05/2021",
+        "borrowed_date": "01/05/2021",
+        "over_dueamount": "60"
+      },
+       {
+        "id": "9",
+        "book_name": "book_9",
+        "author_name": "author_9",
+        "category": "category_9",
+        "borrowed_status": "returned",
+        "return_Date": "19/05/2021",
+        "borrowed_date": "01/05/2021",
+        "over_dueamount": "200"
+      }
+     
+    ]
+  },
+  {
+    "username": "user2@user.com",
+    "name": "user",
+    "admin": "false",
+    "currently_borrowed_books": [
+      {
+        "id": "6",
+        "book_name": "book6",
+        "author_name": "author_6",
+        "category": "category_6",
+        "borrowed_status": "borrowed",
+        "return_Date": "08/06/2021",
+        "borrowed_date": "25/05/2021"
+      },
+      {
+        "id": "8",
+        "book_name": "book8",
+        "author_name": "author_8",
+        "category": "category_2",
+        "borrowed_status": "borrowed",
+        "return_Date": "04/06/2021",
+        "borrowed_date": "22/05/2021"
+      }
+    ],
+    "Borrowed_transaction_history": [
+      {
+        "id": "4",
+        "book_name": "book_4",
+        "author_name": "author_4",
+        "category": "category_4",
+        "borrowed_status": "returned",
+        "return_Date": "19/05/2021",
+        "borrowed_date": "04/05/2021",
+        "over_dueamount": "0"
+      },
+      {
+        "id": "5",
+        "book_name": "book_",
+        "author_name": "author_4",
+        "category": "category_4",
+        "borrowed_status": "returned",
+        "return_Date": "18/05/2021",
+        "borrowed_date": "01/05/2021",
+        "over_dueamount": "60"
+      },
+       {
+        "id": "9",
+        "book_name": "book_9",
+        "author_name": "author_9",
+        "category": "category_9",
+        "borrowed_status": "returned",
+        "return_Date": "19/05/2021",
+        "borrowed_date": "01/05/2021",
+        "over_dueamount": "200"
+      }
+     
+    ]
+  },
+  {
+    "username": "user3@user.com",
+    "name": "user",
+    "admin": "false",
+    "currently_borrowed_books": [
+     
+    ],
+    "Borrowed_transaction_history": [
+      {
+        "id": "4",
+        "book_name": "book_4",
+        "author_name": "author_4",
+        "category": "category_4",
+        "borrowed_status": "returned",
+        "return_Date": "19/05/2021",
+        "borrowed_date": "04/05/2021",
+        "over_dueamount": "0"
+      },
+      {
+        "id": "5",
+        "book_name": "book_",
+        "author_name": "author_4",
+        "category": "category_4",
+        "borrowed_status": "returned",
+        "return_Date": "18/05/2021",
+        "borrowed_date": "01/05/2021",
+        "over_dueamount": "60"
+      },
+       {
+        "id": "9",
+        "book_name": "book_9",
+        "author_name": "author_9",
+        "category": "category_9",
+        "borrowed_status": "returned",
+        "return_Date": "19/05/2021",
+        "borrowed_date": "01/05/2021",
+        "over_dueamount": "200"
+      }
+     
+    ]
+  }
+]
