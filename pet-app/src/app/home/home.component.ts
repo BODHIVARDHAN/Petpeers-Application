@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   closeModel(){
     $('#exampleModal').modal('hide');
     this.newpetDetails.reset();
+    
   }
   onSubmit() {
     this.isValidForm = true;
@@ -63,6 +64,7 @@ export class HomeComponent implements OnInit {
           // this.router.navigate(['login']);
           $('#exampleModal').modal('hide');
           this.newpetDetails.reset();
+          this.getAllpets()
         }
     });
   }

@@ -7,15 +7,19 @@ export class AuthService {
     private user: User;
 
     isAuthorized() {
+        console.log('Enters in isAuthorizes function..')
         return !!this.user;
     }
 
     hasRole(role: Role) {
-        return this.isAuthorized()  && this.user.Role === role;
+      console.log('Enters in hasRole function..',role)
+        return this.isAuthorized() 
+         && this.user.Role === role;
     }
 
     login(role: Role) {
       this.user = { Role: role };
+      console.log('Enters in login function..',this.user)
     }
 
     logout() {
