@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { PetService } from '../services/pet.service';
 import * as pets from '../services/pets.json';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   isValidForm = false;
   constructor(
     private router: Router, private httpClient: HttpClient,
-    private user_service: UserService, private _formBuilder: FormBuilder,) { }
+    private user_service: PetService, private _formBuilder: FormBuilder,) { }
   ngOnInit() {
     console.log('Pets', this.Pets);
 

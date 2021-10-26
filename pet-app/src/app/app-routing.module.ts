@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+// import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './error/not-found/not-found.component';
 import { AuthGuard } from './app-routing.guard';
@@ -8,16 +8,17 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { Role } from './models/role';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './admin/home/home.component';
 
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      {
-        path: '',
-        component: HomeComponent
-      },
+      // {
+      //   path: 'home',
+      //   component: HomeComponent
+      // },
 
       {
         path: 'profile',

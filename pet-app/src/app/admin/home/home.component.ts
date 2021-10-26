@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as pets from './../services/pets.json';
-import { Role } from '../models/role';
+// import * as pets from './../services/pets.json';
+import { Role } from '../../models/role';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { PetService } from '../../services/pet.service';
 declare var $ :any;
 
 @Component({
@@ -13,20 +13,21 @@ declare var $ :any;
 export class HomeComponent implements OnInit {
   Role = Role;
   p=1
-  Pets: any = (pets as any).default;
+  // Pets: any = (pets as any).default;
   newpetDetails: any;
   isValidForm: boolean=false;
   PetData: any;
 
   constructor(private _formBuilder: FormBuilder,
-    private user_service: UserService){}
+    private user_service: PetService){}
   ngOnInit(){
-    console.log('Pets',this.Pets);
+    // console.log('Pets',this.Pets);
     this.newpetDetails = this._formBuilder.group({
       pet_name: ['', Validators.required],
       pet_place: ['', Validators.required],
       pet_age: ['', Validators.required],
-      borrowed_status:1
+      borrowed_status:1,
+      id:''
     },
     );
     this.getAllpets()
@@ -36,28 +37,39 @@ export class HomeComponent implements OnInit {
   getAllpets(){
     this.user_service.getAllpets().subscribe((data: any) => {
       console.log('data,,',data);
-      this.PetData = data['PetData'] || '';
+      this.PetData = data;
       console.log('PetData,,',this.PetData);
   });
   }
   openModel(){
+    this.newpetDetails.reset();
     $('#exampleModal').modal('show')
   }
   closeModel(){
     $('#exampleModal').modal('hide');
-    this.newpetDetails.reset();
-    
+    this.newpetDetails.enable()
+    this.newpetDetails.reset();    
   }
   onSubmit() {
     this.isValidForm = true;
-    console.log('aaaa', this.newpetDetails.invalid)
     if (this.newpetDetails.invalid) {
       this.isValidForm = false;
       this.markAsTouched(this.newpetDetails);
       return;
-    } 
-    this.user_service.addpet(this.newpetDetails.value).subscribe((data: any) => {
-        console.log('data,,',data);
+    }
+    if(this.newpetDetails.value.id == undefined || this.newpetDetails.value.id == null || this.newpetDetails.value.id == ''){
+      this.user_service.addpet(this.newpetDetails.value).subscribe((data: any) => {
+         if(data['status'] == "exits") {
+            alert("User Alredy Exits ")
+          }else if (data['status'] == "success") {
+            // this.router.navigate(['login']);
+            $('#exampleModal').modal('hide');
+            this.newpetDetails.reset();
+            this.getAllpets()
+          }
+      });
+    }else{
+      this.user_service.editpet(this.newpetDetails.value).subscribe((data: any) => {
         if(data['status'] == "exits") {
           alert("User Alredy Exits ")
         }else if (data['status'] == "success") {
@@ -67,6 +79,7 @@ export class HomeComponent implements OnInit {
           this.getAllpets()
         }
     });
+    }
   }
   markAsTouched(group: FormGroup | FormArray) {
     Object.keys(group.controls).map((field) => {
@@ -77,5 +90,31 @@ export class HomeComponent implements OnInit {
         this.markAsTouched(control);
       }
     });
+  }
+  editaPetsData(petData:any){
+    $('#exampleModal').modal('show');
+    this.newpetDetails.patchValue(petData);
+  }
+  viewDetails(petData:any){
+    $('#exampleModal').modal('show');
+    this.newpetDetails.patchValue(petData);
+    this.newpetDetails.disable()
+  }
+  deletePet(petData:any){
+    this.newpetDetails.patchValue(petData);
+    this.user_service.deletePet(this.newpetDetails.value).subscribe((data: any) => {
+      if (data['status'] == "success") {
+        this.newpetDetails.reset();
+        this.getAllpets()
+      }
+  });
+  }
+  deleteAll(){
+    this.user_service.deleteAll().subscribe((data: any) => {
+      if (data['status'] == "success") {
+        alert(data['message']);
+        window.location.reload()
+      }
+  });
   }
 }

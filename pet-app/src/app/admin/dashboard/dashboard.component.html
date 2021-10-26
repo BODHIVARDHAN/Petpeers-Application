@@ -3,7 +3,103 @@
   <button type="button" class="btn btn-indigo btn-sm m-0 btn-success">Add New Pet</button>
 </div>
 
-<!-- <div class="alert alert-success" role="alert">
-  Dashboard component!
+<div class="alert alert-success" role="alert">
+  <div class="container-fluid" role="alert">
 
-</div> -->
+    <div *appUserRole="[ Role.Admin ]" class="float-right p-2" style="text-align: right;" role="alert">
+      <button (click)="openModel()" type="button" class="btn btn-indigo btn-sm m-2 p-3 btn-success">Add New Pet</button>
+      <button (click)="deleteAll()" type="button" class="btn btn-indigo btn-sm m-2 p-3 btn-success">Delete All Pets</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add New Pet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModel()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form style="text-align: left;" [formGroup]="newpetDetails" (ngSubmit)="onSubmit()">
+                <div class="form-group ">
+                  <label for="recipient-name" class="col-form-label">Pet Name</label>
+                  <input placeholder="Enter Pet Name" type="text" id="form3Example1c" formControlName="pet_name"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': (isValidForm && f.pet_name.errors) || (f.pet_name.touched && f.pet_name.errors) }" />
+                  <div *ngIf="(isValidForm && f.pet_name.errors) || (f.pet_name.touched && f.pet_name.errors)"
+                    class="invalid-feedback">
+                    <div *ngIf="f.pet_name.errors.required">Pet name is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Pet Place</label>
+                  <input placeholder="Enter Pet Place" type="text" id="form3Example1c" formControlName="pet_place"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': (isValidForm && f.pet_place.errors) || (f.pet_place.touched && f.pet_place.errors) }" />
+                  <div *ngIf="(isValidForm && f.pet_place.errors) || (f.pet_place.touched && f.pet_place.errors)"
+                    class="invalid-feedback">
+                    <div *ngIf="f.pet_place.errors.required">Pet place is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Pet Age</label>
+                  <input placeholder="Enter Pet Age" type="number" formControlName="pet_age" class="form-control"
+                    [ngClass]="{ 'is-invalid': (isValidForm && f.pet_age.errors) || (f.pet_age.touched && f.pet_age.errors) }" />
+                  <div *ngIf="(isValidForm && f.pet_age.errors) || (f.pet_age.touched && f.pet_age.errors)"
+                    class="invalid-feedback">
+                    <div *ngIf="f.pet_age.errors.required">Pet age is required</div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModel()">Close</button>
+              <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add pet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  
+    <table class="table alert alert-success mt-2">
+      <thead class="thead-dark">
+        <h3>User Details</h3>
+        <tr>
+          <th>no</th>
+          <th>User Name</th>
+          <th>User Place</th>
+          <th>Use Age</th>
+          <th>Adress</th>
+          <th>Actoin</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Pets of PetData| paginate: { itemsPerPage: 10, currentPage: p }let i = index;">
+          <th scope="row">{{10*(p-1)+i+1}}</th>
+          <td>{{Pets.pet_name}}</td>
+          <td>{{Pets.pet_place}}</td>
+          <td>{{Pets.pet_age}}</td>
+          <td>
+            <button *ngIf="Pets.borrowed_status == 1" type="button"
+              class="btn btn-indigo btn-sm m-0 btn-success">Buy</button>
+            <button [disabled]="Pets.borrowed_status == 0" *ngIf="Pets.borrowed_status == 0" type="button"
+              class="btn btn-indigo btn-sm m-0 btn-success">Sold</button>
+          </td>
+  
+          <td>
+            <button *ngIf="Pets.borrowed_status == 1" type="button" (click)="editaPetsData(Pets)"
+              class="btn btn-indigo btn-sm m-0 btn-success">Edit</button>&nbsp;
+            <button type="button" (click)="deletePet(Pets)"
+              class="btn btn-indigo btn-sm m-0 btn-success">Delete</button>
+          </td>
+          <td>  <button type="button"
+            class="btn btn-indigo btn-sm m-0 btn-success" (click)="viewDetails(Pets)">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls class="paginationControl" (pageChange)="p = $event"></pagination-controls>
+  
+  </div>
+
+</div>

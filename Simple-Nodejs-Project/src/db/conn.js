@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-
+const db = require("../config/db.config.js")
 console.log('enter..')
-mongoose.connect('mongodb://localhost:27017/test', {
+mongoose.connect(db.url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -10,4 +10,4 @@ mongoose.connect('mongodb://localhost:27017/test', {
     console.log('connected....');
 }).catch((e)=>{
     console.log(e);
-});
+});                                                                 

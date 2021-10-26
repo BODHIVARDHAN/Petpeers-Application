@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { Role } from '../models/role';
 import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import { PetService } from '../services/pet.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   userDetails: any;
   isValidForm = false;
   constructor(private router: Router, private authService: AuthService,
-    private _formBuilder: FormBuilder,private user_service: UserService,
+    private _formBuilder: FormBuilder,private user_service: PetService,
   ) { }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
   login(role: Role) {
     this.authService.login(role);
-    this.router.navigate(['/']);
+    this.router.navigate(['admin/home']);
   }
   gotoRegister() {
     this.router.navigate(['register'])

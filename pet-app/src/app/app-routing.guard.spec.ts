@@ -1,10 +1,10 @@
 import { TestBed, inject, getTestBed } from '@angular/core/testing';
 // import { AuthGuard } from './auth.guard';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AuthGuard } from '../app-routing.guard';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { AuthGuard } from './app-routing.guard';
+import { AuthService } from './services/auth.service';
 describe('AuthGuard', () => {
     let injector: TestBed;
     let authService: AuthService 
