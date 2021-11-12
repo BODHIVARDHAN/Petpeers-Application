@@ -96,9 +96,10 @@ export class HomeComponent implements OnInit {
     this.newpetDetails.patchValue(petData);
   }
   viewDetails(petData:any){
+    console.log('enter into view details....')
     $('#exampleModal').modal('show');
     this.newpetDetails.patchValue(petData);
-    this.newpetDetails.disable()
+    this.newpetDetails.disable() 
   }
   deletePet(petData:any){
     this.newpetDetails.patchValue(petData);

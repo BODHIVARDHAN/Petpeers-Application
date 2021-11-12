@@ -26,11 +26,22 @@ export class PetService {
     return this._http.get(this.url+'api/pets');
   } 
   deletePet(data:any){
-    let params = new HttpParams();
+    let params = new HttpParams(); 
     params = params.append('id', data.id);      
     return this._http.delete(this.url+'api/pets/'+data.id);
   }
   deleteAll(){   
     return this._http.delete(this.url+'api/pets');
   }  
+  adduser(data:any) {
+    return this._http.post(this.url+'api/users',data);
+  }
+  getAllusers() {
+    return this._http.get(this.url+'api/users');
+  } 
+  deleteUser(data:any){
+    let params = new HttpParams(); 
+    params = params.append('id', data.id);      
+    return this._http.delete(this.url+'api/users/'+data.id);
+  }
 }

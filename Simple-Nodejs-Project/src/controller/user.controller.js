@@ -4,9 +4,11 @@ const User = require("../models/user.model");
 exports.create = async (req, res) => {
     // Create a User
     const User1 = new User({
-        username: req.body.username,
-        role: req.body.role,
-        password: req.body.password
+      user_name:req.body.user_name,
+      user_place:req.body.user_place,
+      user_age:req.body.user_age,
+      user_status:req.body.user_status,
+      user_role:req.body.user_role,
     });
     console.log("User1...",User1);
     // Save User in the database

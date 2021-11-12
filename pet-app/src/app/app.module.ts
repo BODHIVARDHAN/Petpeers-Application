@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
     UserDirective,
     UserRoleDirective,
     RegisterComponent,
+    TestComponent,
     
   ],
   imports: [

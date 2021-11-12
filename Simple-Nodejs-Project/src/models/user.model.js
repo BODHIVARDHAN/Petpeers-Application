@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const users = new mongoose.Schema({
-    username:String,
-    confirmPassword:String,
-    password:String,
-    role:String,
+  user_name:String,
+  user_place:String,
+  user_age:Number,
+  user_status:Number,
+  user_role:String
 });
 users.method("toJSON", function() {
     const { __v, _id, ...object } = this.toObject();

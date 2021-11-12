@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       this.markAsTouched(this.userDetails);
       return;
     }
-    this.user_service.create(this.userDetails.value).subscribe((data: any) => {
+    this.user_service.adduser(this.userDetails.value).subscribe((data: any) => {
       console.log('data..', data['data']);
       if(data['status'] == "exits") {
         alert("User Alredy Exits ")

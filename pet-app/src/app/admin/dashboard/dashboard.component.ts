@@ -18,17 +18,24 @@ export class DashboardComponent implements OnInit {
   // Pets: any = (pets as any).default;
   newpetDetails: any;
   isValidForm: boolean=false;
-  PetData: any;
+  userData: any;
 
   constructor(private _formBuilder: FormBuilder,
     private user_service: PetService){}
   ngOnInit(){
     // console.log('Pets',this.Pets);
     this.newpetDetails = this._formBuilder.group({
-      pet_name: ['', Validators.required],
-      pet_place: ['', Validators.required],
-      pet_age: ['', Validators.required],
-      borrowed_status:1,
+      // pet_name: ['', Validators.required],
+      // pet_place: ['', Validators.required],
+      // pet_age: ['', Validators.required],
+      // borrowed_status:1,
+      // id:'',
+
+      user_name:['', Validators.required],
+      user_place:['', Validators.required],
+      user_age:['', Validators.required],
+      user_status:1,
+      user_role:['user'],
       id:''
     },
     );
@@ -37,10 +44,10 @@ export class DashboardComponent implements OnInit {
   get f() { return this.newpetDetails.controls; }
 
   getAllpets(){
-    this.user_service.getAllpets().subscribe((data: any) => {
+    this.user_service.getAllusers().subscribe((data: any) => {
       console.log('data,,',data);
-      this.PetData = data;
-      console.log('PetData,,',this.PetData);
+      this.userData = data;
+      console.log('userData,,',this.userData);
   });
   }
   openModel(){
@@ -60,7 +67,7 @@ export class DashboardComponent implements OnInit {
       return;
     }
     if(this.newpetDetails.value.id == undefined || this.newpetDetails.value.id == null || this.newpetDetails.value.id == ''){
-      this.user_service.addpet(this.newpetDetails.value).subscribe((data: any) => {
+      this.user_service.adduser(this.newpetDetails.value).subscribe((data: any) => {
          if(data['status'] == "exits") {
             alert("User Alredy Exits ")
           }else if (data['status'] == "success") {
@@ -93,18 +100,18 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-  editaPetsData(petData:any){
+  editauserData(userData:any){
     $('#exampleModal').modal('show');
-    this.newpetDetails.patchValue(petData);
+    this.newpetDetails.patchValue(userData);
   }
-  viewDetails(petData:any){
+  viewDetails(userData:any){
     $('#exampleModal').modal('show');
-    this.newpetDetails.patchValue(petData);
+    this.newpetDetails.patchValue(userData);
     this.newpetDetails.disable()
   }
-  deletePet(petData:any){
-    this.newpetDetails.patchValue(petData);
-    this.user_service.deletePet(this.newpetDetails.value).subscribe((data: any) => {
+  deleteUser(userData:any){
+    this.newpetDetails.patchValue(userData);
+    this.user_service.deleteUser(this.newpetDetails.value).subscribe((data: any) => {
       if (data['status'] == "success") {
         this.newpetDetails.reset();
         this.getAllpets()
