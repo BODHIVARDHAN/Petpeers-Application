@@ -1,4 +1,4 @@
-const User = require("../models/user.model");
+const User = require("../models/register.model");
 const jwt = require("jsonwebtoken");
 
 // const createToken = async() => {
@@ -7,18 +7,18 @@ const jwt = require("jsonwebtoken");
 // Create and Save a new User
 exports.create = async (req, res) => {
     // Create a User
-  try {
     const User1 = new User({
-      user_name:req.body.user_name,
-      user_place:req.body.user_place,
-      user_age:req.body.user_age,
-      user_status:req.body.user_status,
-      user_role:req.body.user_role,
+      username:req.body.username,
+      confirmPassword:req.body.confirmPassword,
+      password:req.body.password,
+      role:'user'
     });
     // const token = await User1.genrateToken();
 
     // password hash
+    
     // Save User in the database
+    try {
         const user = await User1.save(User)
         res.status(202).send({
             status: "success",

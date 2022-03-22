@@ -34,7 +34,7 @@ export class PetService {
     return this._http.delete(this.url+'api/pets');
   }  
   adduser(data:any) {
-    return this._http.post(this.url+'api/users',data);
+    return this._http.post(this.url+'api/register',data);
   }
   getAllusers() {
     return this._http.get(this.url+'api/users');
